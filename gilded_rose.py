@@ -11,22 +11,23 @@ class GildedRose(object):
             if item.name == "Sulfuras, Hand of Ragnaros":
                 pass
             elif item.name == "Aged Brie":
-                item.quality += 1
+                quality_change += 1
                 if item.sell_in < 0:
-                    item.quality += 1
+                    quality_change += 1
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
-                item.quality += 1
+                quality_change += 1
                 if item.sell_in < 11:
                     if item.quality < 50:
-                        item.quality += 1
+                        quality_change += 1
                 if item.sell_in < 6:
                     if item.quality < 50:
-                        item.quality += 1
+                        quality_change += 1
             else:
                 if item.quality > 0:
-                    item.quality = item.quality - 1
+                    quality_change -= 1
                     if item.sell_in < 0:
-                        item.quality = item.quality - 1
+                        quality_change -= 1
+            item.quality = item.quality + quality_change
             item.sell_in -= 1
 
 
