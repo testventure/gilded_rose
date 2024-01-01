@@ -106,6 +106,18 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(items[0].quality, 0)
+
+    def test_conjured_item_quality_drop(self):
+        items = [Item("conjured belt", sell_in=5, quality=10)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        self.assertEqual(items[0].quality, 8)
+
+    def test_conjured_item_quality_drop_past_sell_in(self):
+        items = [Item("conjured belt", sell_in=-1, quality=10)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        self.assertEqual(items[0].quality, 6)
         
 
         
