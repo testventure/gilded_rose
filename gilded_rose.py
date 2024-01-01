@@ -20,10 +20,10 @@ class GildedRose(object):
                 else:
                     quality_change += 1
             else:
-                if item.quality > 0:
+                if item.sell_in < 0:
+                    quality_change -= 2
+                else:
                     quality_change -= 1
-                    if item.sell_in < 0:
-                        quality_change -= 1
             if item.name != "Sulfuras, Hand of Ragnaros":
                 item.quality = limit(item.quality + quality_change)
             item.sell_in -= 1
