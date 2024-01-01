@@ -100,6 +100,12 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(items[0].quality, 0)
+
+    def test_quality_cannot_be_negative(self):
+        items = [Item("belt", sell_in=5, quality=0)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        self.assertEqual(items[0].quality, 0)
         
 
         
