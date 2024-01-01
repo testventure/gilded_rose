@@ -8,17 +8,14 @@ class GildedRose(object):
     def update_quality(self):
         for item in self.items:
             quality_change = 0
-            if item.name == "Sulfuras, Hand of Ragnaros":
-                pass
-            elif item.name == "Aged Brie":
+            if item.name == "Aged Brie":
                 quality_change += 1
                 if item.sell_in < 0:
                     quality_change += 1
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                 quality_change += 1
                 if item.sell_in < 11:
-                    if item.quality < 50:
-                        quality_change += 1
+                    quality_change += 1
                 if item.sell_in < 6:
                     if item.quality < 50:
                         quality_change += 1
@@ -27,9 +24,12 @@ class GildedRose(object):
                     quality_change -= 1
                     if item.sell_in < 0:
                         quality_change -= 1
-            item.quality = item.quality + quality_change
+            if item.name != "Sulfuras, Hand of Ragnaros":
+                item.quality = limit(item.quality + quality_change)
             item.sell_in -= 1
 
+def limit(num, minimum=0, maximum=50):
+  return max(min(num, maximum), minimum)
 
 
 class Item:
