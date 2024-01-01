@@ -24,9 +24,9 @@ class GildedRose(object):
                     quality_change += 1
             elif "conjured" in item.name.lower():
                 if item.sell_in < 0:
-                    quality_change += -4
+                    quality_change -= 4
                 else:
-                    quality_change += -2
+                    quality_change -= 2
             else:
                 if item.sell_in < 0:
                     quality_change -= 2
