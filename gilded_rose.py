@@ -14,7 +14,9 @@ class GildedRose(object):
                 else:
                     quality_change += 1
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
-                if item.sell_in < 6:
+                if item.sell_in < 0:
+                    quality_change = -item.quality
+                elif item.sell_in < 6:
                     quality_change += 3
                 elif item.sell_in < 11:
                     quality_change += 2
