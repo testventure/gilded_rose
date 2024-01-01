@@ -9,8 +9,9 @@ class GildedRose(object):
         for item in self.items:
             quality_change = 0
             if item.name == "Aged Brie":
-                quality_change += 1
                 if item.sell_in < 0:
+                    quality_change += 2
+                else:
                     quality_change += 1
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                 if item.sell_in < 6:
