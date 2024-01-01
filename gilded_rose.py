@@ -29,6 +29,7 @@ class GildedRose(object):
                     quality_change -= 1
                 if "conjured" in item.name.lower():
                     quality_change = 2 * quality_change
+            # Legendary items are above the 50 quality threshold
             if item.quality <= 50:
                 item.quality = limit(item.quality + quality_change)
             item.sell_in -= 1
