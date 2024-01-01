@@ -88,6 +88,12 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(items[0].quality, 23)
+
+    def test_backstage_pass_quality_at_50(self):
+        items = [Item("Backstage passes to a TAFKAL80ETC concert", sell_in=3, quality=50)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        self.assertEqual(items[0].quality, 50)
         
 
         
