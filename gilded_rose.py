@@ -22,16 +22,13 @@ class GildedRose(object):
                     quality_change += 2
                 else:
                     quality_change += 1
-            elif "conjured" in item.name.lower():
-                if item.sell_in < 0:
-                    quality_change -= 4
-                else:
-                    quality_change -= 2
             else:
                 if item.sell_in < 0:
                     quality_change -= 2
                 else:
                     quality_change -= 1
+                if "conjured" in item.name.lower():
+                    quality_change = 2 * quality_change
             if item.name != "Sulfuras, Hand of Ragnaros":
                 item.quality = limit(item.quality + quality_change)
             item.sell_in -= 1
