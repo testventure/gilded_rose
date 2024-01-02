@@ -7,26 +7,25 @@ class GildedRose(object):
 
     def update_quality(self):
         for item in self.items:
-            quality_change = 0
             if item.name == "Aged Brie":
                 if item.sell_in < 0:
-                    quality_change += 2
+                    quality_change = 2
                 else:
-                    quality_change += 1
+                    quality_change = 1
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                 if item.sell_in < 0:
                     quality_change = -item.quality
                 elif item.sell_in < 6:
-                    quality_change += 3
+                    quality_change = 3
                 elif item.sell_in < 11:
-                    quality_change += 2
+                    quality_change = 2
                 else:
-                    quality_change += 1
+                    quality_change = 1
             else:
                 if item.sell_in < 0:
-                    quality_change -= 2
+                    quality_change = -2
                 else:
-                    quality_change -= 1
+                    quality_change = -1
                 if "conjured" in item.name.lower():
                     quality_change = 2 * quality_change
             # Legendary items are above the 50 quality threshold
